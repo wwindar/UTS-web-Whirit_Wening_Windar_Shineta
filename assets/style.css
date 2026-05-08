@@ -1,0 +1,94 @@
+/* assets/style.css */
+
+/* Pengaturan Dasar */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f1ea; /* Warna krem kertas novel */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigasi Responsif (Poin B.5) */
+nav {
+    background-color: #5d4037; /* Cokelat tua sastra */
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+/* Container Utama */
+.container {
+    width: 90%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Tabel Data (Poin B.4) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #8d6e63;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Form Input (Poin B.3) */
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"], input[type="password"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Biar pas dengan container */
+}
+
+/* Tombol */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-tambah { background-color: #4caf50; color: white; }
+.btn-edit { background-color: #2196f3; color: white; }
+.btn-hapus { background-color: #f44336; color: white; }
+
+/* Responsive sederhana */
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+    nav a {
+        margin: 10px 0;
+    }
+}
