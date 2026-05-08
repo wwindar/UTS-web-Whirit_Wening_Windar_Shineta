@@ -1,7 +1,11 @@
 <?php
+
 session_start();
 include 'koneksi.php';
-if (!isset($_SESSION['user'])) { header("Location: login.php"); } // Proteksi halaman
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+    }
 
 $query = "SELECT * FROM resensi ORDER BY id DESC";
 $result = mysqli_connect($conn, $query);
