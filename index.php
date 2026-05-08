@@ -26,7 +26,7 @@
                 <th>Tanggal Input</th>
             </tr>
             <?php
-            $query = mysqli_query($conn, "SELECT * FROM resensi");
+            $query = mysqli_query($conn, "SELECT * FROM resensi") or die(mysqli_error($conn));
             $no = 1;
             while($data = mysqli_fetch_array($query)) {
             ?>
