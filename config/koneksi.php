@@ -2,12 +2,11 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "resensi_buku";
+$db   = "uts_web"; 
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 
-if 
-(!$conn) {
-    die("koneksi gagal: " . mysqli_connect_error());
+if (!$conn) {
+    die("Koneksi ke database gagal: " . mysqli_connect_error());
 }
 ?>
