@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset=""UTF-8>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katalog Resensi Buku</title>
     <link rel="stylesheet" href="assets/style.css"> </head>
@@ -32,7 +32,7 @@
             ?>
             <tr>
                 <td><?= $no++; ?></td>
-                <td><?= $data['judul']; ?></td>
+                <td><?= $data['judul_buku']; ?></td>
                 <td><?= $data['penulis']; ?></td>
                 <td><?= $data['genre']; ?></td>
                 <td><?= $data['ulasan']; ?></td>
