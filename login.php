@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config/koneksi.php';
+include 'config/koneksi.php'; // Baris ini sekarang benar karena file sudah di luar
 
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
@@ -10,9 +10,10 @@ if (isset($_POST['login'])) {
     
     if (mysqli_num_rows($query) > 0) {
         $_SESSION['status'] = "login";
-        header("location:dashboard.php"); // Pindah ke dashboard otomatis
+        header("location:dashboard.php"); // Otomatis pindah ke dashboard
+        exit();
     } else {
-        echo "Gagal Login!";
+        echo "Login Gagal!";
     }
 }
 ?>
