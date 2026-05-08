@@ -1,53 +1,52 @@
-<?php
+<?php 
 session_start();
-if (!isset($_SESSION['user'])) {
-    header("Location: login.php");
-    exit();
+if($_SESSION['status'] != "login"){
+    header("location:login.php?pesan=belum_login");
 }
-include 'koneksi.php';
+include 'config/koneksi.php';
 ?>
-
-$query = "SELECT * FROM resensi ORDER BY id DESC";
-$result = mysqli_connect($conn, $query);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard Sastra</title>
+    <title>Dashboard - Katalog Sastra</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
     <nav>
-        <span>Halo, <?php echo $_SESSION['user']; ?></span>
+        <h2>KatalogResensi.id</h2>
         <div>
-            <a href="dashboard.php">Home</a>
-            <a href="tambah.php">Tambah Resensi</a>
-            <a href="logout.php">Logout</a>
+            <a href="dashboard.php">Home</a> | 
+            <a href="tambah.php">Tambah Data</a> | 
+            <a href="logout.php">Keluar</a>
         </div>
     </nav>
 
     <div class="container">
-        <h2>Katalog Resensi Buku</h2>
-        <a href="tambah.php" class="btn btn-tambah">+ Tambah Buku</a>
-        <table>
+        <h1>Daftar Resensi Buku</h1>
+        <table border="1" cellpadding="10">
             <tr>
+                <th>No</th>
                 <th>Judul</th>
                 <th>Penulis</th>
                 <th>Rating</th>
                 <th>Aksi</th>
             </tr>
-            <?php while($row = mysqli_fetch_assoc($result)) : ?>
+            <?php 
+            $no = 1;
+            $data = mysqli_query($conn, "SELECT * FROM resensi");
+            while($d = mysqli_fetch_array($data)){
+            ?>
             <tr>
-                <td><?php echo $row['judul_buku']; ?></td>
-                <td><?php echo $row['penulis']; ?></td>
-                <td><?php echo $row['rating']; ?>/5</td>
+                <td><?= $no++; ?></td>
+                <td><?= $d['judul_buku']; ?></td>
+                <td><?= $d['penulis']; ?></td>
+                <td><?= $d['rating']; ?>/5</td>
                 <td>
-                    <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn btn-edit">Edit</a>
-                    <a href="hapus.php?id=<?php echo $row['id']; ?>" class="btn btn-hapus" onclick="return confirm('Yakin hapus?')">Hapus</a>
+                    <a href="edit.php?id=<?= $d['id']; ?>">Edit</a> |
+                    <a href="hapus.php?id=<?= $d['id']; ?>" onclick="return confirm('Yakin?')">Hapus</a>
                 </td>
             </tr>
-            <?php endwhile; ?>
+            <?php } ?>
         </table>
     </div>
 </body>
