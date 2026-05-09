@@ -97,10 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </div>
-<script src="assets/js/main.js"></script>
 
     <footer class="footer">
-        <p>© <?= date('Y') ?> Katalog Resensi Buku &nbsp;·&nbsp; UTS Praktikum Web 1</p>
+        <p>© <?= date('Y') ?> Katalog Resensi Buku &nbsp;·&nbsp; UTS Praktikum Web Windar Shineta</p>
     </footer>
 <script src="<?= $basePath ?? '../' ?>assets/js/main.js"></script>
 
