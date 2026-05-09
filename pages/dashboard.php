@@ -26,13 +26,25 @@ function renderStars($rating) {
 ?>
 <?php include '../includes/header.php'; ?>
 
-<div class="main-content">
-    <div class="page-header">
-        <h1>Dashboard</h1>
-        <p>Selamat datang, <strong><?= htmlspecialchars($_SESSION['username']) ?></strong> — ringkasan katalog resensi buku.</p>
-    </div>
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><?= isset($pageTitle) ? htmlspecialchars($pageTitle) . ' — ' : '' ?>Katalog Resensi Buku</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/style.css">
+    </head>
+    <body>
+        
+        <div class="main-content">
+        <div class="page-header">
+            <h1>Dashboard</h1>
+            <p>Selamat datang, <strong><?= htmlspecialchars($_SESSION['username']) ?></strong> — ringkasan katalog resensi buku.</p>
+        </div>
 
-    <div class="stats-grid">
+        <div class="stats-grid">
         <div class="stat-card">
             <div class="stat-icon">📖</div>
             <div class="stat-num"><?= $totalResensi ?></div>
@@ -101,7 +113,13 @@ function renderStars($rating) {
         <div style="margin-top:1rem">
             <a href="katalog.php" class="btn btn-outline">Lihat Semua Resensi →</a>
         </div>
-    <?php endif; ?>
-</div>
+        <?php endif; ?>
+        </div>
+        <?php include '../includes/footer.php'; ?>
 
-<?php include '../includes/footer.php'; ?>
+    <footer class="footer">
+        <p>© <?= date('Y') ?> Katalog Resensi Buku &nbsp;·&nbsp; UTS Praktikum Web Windar Shineta</p>
+    </footer>
+    <script src="<?= $basePath ?? '../' ?>assets/js/main.js"></script>
+</body>
+</html>

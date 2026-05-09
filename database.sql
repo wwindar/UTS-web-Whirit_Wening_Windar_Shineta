@@ -1,10 +1,8 @@
--- =============================================
--- DATABASE: uts_sastra
+-- DATABASE: uts_web
 -- Katalog Resensi Buku
--- =============================================
 
-CREATE DATABASE IF NOT EXISTS uts_sastra;
-USE uts_sastra;
+CREATE DATABASE IF NOT EXISTS uts_web;
+USE uts_web;
 
 -- Tabel untuk akun pengguna
 CREATE TABLE IF NOT EXISTS users (
