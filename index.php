@@ -1,49 +1,88 @@
-<?php include 'config/koneksi.php'; ?>
+<?php
+
+session_start();
+require_once 'config/db.php';
+require_once 'includes/auth.php';
+
+redirectIfLoggedIn();
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    if (empty($username) || empty($password)) {
+        $error = 'Username dan password wajib diisi.';
+    } else {
+
+        $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows === 1) {
+            $user = $result->fetch_assoc();
+            if (password_verify($password, $user['password'])) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                header("Location: pages/dashboard.php");
+                exit();
+            } else {
+                $error = 'Password yang anda masukkan salah.';
+            }
+        } else {
+            $error = 'Username tidak ditemukan.';
+        }
+        $stmt->close();
+    }
+}
+?>
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Resensi Buku</title>
-    <link rel="stylesheet" href="assets/style.css"> </head>
+    <title>Login — Katalog Resensi Buku</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
 <body>
-    <nav>
-        <h2>ResensiBuku.id</h2>
-        <a href="tambah.php">Tambah Resensi</a>
-    </nav>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-logo">
+            <span class="logo-icon">📚</span>
+            <h1>Resensi<em>Buku</em></h1>
+            <p>Katalog Ulasan Buku</p>
+        </div>
 
-    <div class="container">
-        <h1>Daftar Resensi Buku</h1>
+        <?php if ($error): ?>
+            <div class="alert alert-error"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
 
-        <table border="1" cellpadding="10" cellspacing="0">
-            <tr>
-                <th>No</th>
-                <th>Judul Buku</th>
-                <th>Penulis</th>
-                <th>Genre</th>
-                <th>Ulasan</th>
-                <th>Rating</th>
-                <th>Tanggal Input</th>
-            </tr>
-            <?php
-            $query = mysqli_query($conn, "SELECT * FROM resensi") or die(mysqli_error($conn));
-            $no = 1;
-            while($data = mysqli_fetch_array($query)) {
-            ?>
-            <tr>
-                <td><?= $no++; ?></td>
-                <td><?= $data['judul_buku']; ?></td>
-                <td><?= $data['penulis']; ?></td>
-                <td><?= $data['genre']; ?></td>
-                <td><?= $data['ulasan']; ?></td>
-                <td><?= $data['rating']; ?>/5</td>
-                <td>
-                    <a href="edit.php?id=<?= $data['id']; ?>">Edit</a> | 
-                    <a href="hapus.php?id=<?= $data['id']; ?>" onclick="return confirm('Yakin hapus?')">Hapus</a>
-                </td>
-            </tr>
-            <?php } ?>
-        </table>
+        <p class="auth-subtitle">Masuk ke Akun Anda</p>
+
+        <form method="POST" action="">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username"
+                       value="<?= htmlspecialchars($_POST['username'] ?? '') ?>"
+                       placeholder="Masukkan username" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"
+                       placeholder="Masukkan password" required autocomplete="current-password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Masuk</button>
+        </form>
+
+        <div class="auth-footer">
+            Belum punya akun? <a href="pages/register.php">Daftar di sini</a>
+        </div>
     </div>
+</div>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
