@@ -41,6 +41,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-icon">📚</span>
+            <span class="brand-name">Resensi<em>Buku</em></span>
+        </div>
+        <button class="nav-toggle" id="navToggle">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="dashboard.php" class="<?= basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : '' ?>">Dashboard</a></li>
+            <li><a href="katalog.php" class="<?= basename($_SERVER['PHP_SELF']) == 'katalog.php' ? 'active' : '' ?>">Katalog</a></li>
+            <li><a href="tambah.php" class="<?= basename($_SERVER['PHP_SELF']) == 'tambah.php' ? 'active' : '' ?>">+ Tambah Resensi</a></li>
+            <li><a href="logout.php" class="nav-logout">Keluar</a></li>
+        </ul>
+    </nav>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login — Katalog Resensi Buku</title>
@@ -84,5 +98,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </div>
 <script src="assets/js/main.js"></script>
+
+    <footer class="footer">
+        <p>© <?= date('Y') ?> Katalog Resensi Buku &nbsp;·&nbsp; UTS Praktikum Web 1</p>
+    </footer>
+<script src="<?= $basePath ?? '../' ?>assets/js/main.js"></script>
+
 </body>
 </html>
