@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$genreOptions = ['Fiksi Ilmiah', 'Horor', 'Bromance', 'Fiksi Remaja', 'Omegaverse', 'Angst', 'Biografi', 'Filsafat', 'Hurt/Comfort', 'Local/Lokal AU', 'Family', 'Friendship', 'Novel', 'Puisi', 'Cerpen', 'Sejarah', 'Romance', 'Horor', 'Thriller', 'Mystery', 'Fantasy', 'Science Fiction', 'Slice of Life', 'Young Adult', 'Adult', 'Children’s Literature', 'Urban Fantasy' 'Historical', 'Dystopian', 'Contemporary', 'Adventure',  'Thriller & Mystery', 'Lainnya'];
+$genreOptions = ['Fiksi Ilmiah', 'Horor', 'Bromance', 'Fiksi Remaja', 'Omegaverse', 'Angst', 'Biografi', 'Filsafat', 'Hurt/Comfort', 'Local/Lokal AU', 'Family', 'Friendship', 'Novel', 'Puisi', 'Cerpen', 'Sejarah', 'Romance', 'Horor', 'Thriller', 'Mystery', 'Fantasy', 'Science Fiction', 'Slice of Life', 'Young Adult', 'Adult', 'Childrens Literature', 'Urban Fantasy', 'Historical', 'Dystopian', 'Contemporary', 'Adventure',  'Thriller & Mystery', 'Lainnya'];
 ?>
 <?php include '../includes/header.php'; ?>
 
@@ -75,13 +75,13 @@ $genreOptions = ['Fiksi Ilmiah', 'Horor', 'Bromance', 'Fiksi Remaja', 'Omegavers
                     <label for="judul_buku">Judul Buku <span style="color:#c0392b">*</span></label>
                     <input type="text" id="judul_buku" name="judul_buku"
                            value="<?= htmlspecialchars($old['judul_buku'] ?? '') ?>"
-                           placeholder="Contoh: Laskar Pelangi" required maxlength="255">
+                           placeholder="Contoh: Not The Best, But Still Good" required maxlength="255">
                 </div>
                 <div class="form-group">
                     <label for="penulis">Penulis <span style="color:#c0392b">*</span></label>
                     <input type="text" id="penulis" name="penulis"
                            value="<?= htmlspecialchars($old['penulis'] ?? '') ?>"
-                           placeholder="Contoh: Andrea Hirata" required maxlength="100">
+                           placeholder="Contoh: peachhplease" required maxlength="100">
                 </div>
             </div>
 
