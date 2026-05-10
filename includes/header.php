@@ -1,4 +1,5 @@
 <?php
+// includes/header.php
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -8,7 +9,7 @@
     <title><?= isset($pageTitle) ? htmlspecialchars($pageTitle) . ' — ' : '' ?>Katalog Resensi Buku</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="/uts_webwhirit/assets/css/style.css">
 </head>
 <body>
     <nav class="navbar">
