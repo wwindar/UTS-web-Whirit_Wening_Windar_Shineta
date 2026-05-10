@@ -1,10 +1,6 @@
--- DATABASE: uts_web
--- Katalog Resensi Buku
-
 CREATE DATABASE IF NOT EXISTS uts_web;
 USE uts_web;
 
--- Tabel untuk akun pengguna
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
@@ -12,7 +8,6 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabel untuk data resensi buku
 CREATE TABLE IF NOT EXISTS resensi (
     id INT AUTO_INCREMENT PRIMARY KEY,
     judul_buku VARCHAR(255) NOT NULL,
@@ -25,12 +20,12 @@ CREATE TABLE IF NOT EXISTS resensi (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 );
 
--- Sample data user (password: admin123)
+
 INSERT INTO users (username, password) VALUES
 ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi');
 
 -- Sample data resensi
 INSERT INTO resensi (judul_buku, penulis, genre, ulasan, rating, user_id) VALUES
-('Laskar Pelangi', 'Andrea Hirata', 'Novel', 'Kisah inspiratif tentang semangat anak-anak Belitung dalam meraih mimpi. Novel ini menggugah hati dan membuat pembaca bersemangat untuk tidak menyerah.', 5, 1),
-('Bumi Manusia', 'Pramoedya Ananta Toer', 'Sejarah', 'Mahakarya sastra Indonesia yang menggambarkan masa kolonial dengan sangat detail. Minke adalah karakter yang kompleks dan penuh perjuangan.', 5, 1),
-('Dilan 1990', 'Pidi Baiq', 'Romansa', 'Cerita cinta remaja yang manis di era 90-an Bandung. Ringan dibaca namun meninggalkan kesan mendalam tentang kenangan masa muda.', 4, 1);
+('Not The Best, But Still Good', 'peachhplease', 'Romance Comedy', 'Kisah ini berpusat pada Duang, mahasiswa jurusan seni dekoratif yang ceria dan pantang menyerah. Ia jatuh cinta pada Qin, mahasiswa jurusan musik yang sangat populer namun dikenal dingin dan sulit didekati. Keberanian Duang diuji saat festival Loy Krathong, di mana ia mengungkapkan perasaannya. Meski tidak langsung diterima, Qin memberikan kesempatan bagi Duang untuk membuktikan ketulusannya. Hubungan mereka semakin dalam ketika keduanya dipasangkan dalam sebuah pertunjukan musikal kampus, memaksa mereka untuk saling memahami dunia satu sama lain.', 5, 1),
+('Thame-Po', 'Chiffon_cake', 'Romance', 'Serial ini menceritakan tentang Thame, seorang remaja yang memiliki bakat luar biasa dalam bermusik namun memiliki kepribadian yang cukup tertutup dan kaku. Kehidupannya mulai berubah secara tidak terduga saat ia bertemu dengan Po, seorang pemuda yang ceria dan penuh semangat. Pertemuan mereka berawal dari ketidaksengajaan yang membuat "jantung berdegup kencang"—sesuai dengan judulnya. Melalui musik dan interaksi sehari-hari di sekolah, Po perlahan-lahan mencairkan dinding es di sekitar Thame, sementara Thame membantu Po menemukan kedalaman dalam ekspresi seninya.', 5, 1),
+('Khemjira Tong Rot', 'Cali', 'Supranatural', 'Keluarga Khemjira dihantui oleh kutukan kuno yang menargetkan anak laki-laki; konon, tidak ada anak laki-laki di garis keturunan mereka yang akan bertahan hidup melewati usia 20 tahun. Untuk mengelabui takdir, Khemjira dibesarkan dengan nama perempuan. Menjelang ulang tahunnya yang ke-20, teror mistis mulai menguat. Satu-satunya harapan Khemjira adalah Peem, seorang pemuda yang memiliki ilmu spiritual tinggi dan kekuatan okultisme. Hubungan mereka berkembang dari rasa takut dan ketergantungan menjadi ikatan emosional yang mendalam, di mana Peem berusaha keras melindungi Khemjira dari entitas gelap yang ingin mencabut nyawanya.', 4, 1);
