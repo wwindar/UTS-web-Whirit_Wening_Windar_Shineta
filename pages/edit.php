@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $buku['rating'] = $rating;
 }
 
-$genreOptions = ['Fiksi Ilmiah', 'Horor', 'Bromance', 'Fiksi Remaja', 'Omegaverse', 'Angst', 'Biografi', 'Filsafat', 'Hurt/Comfort', 'Local/Lokal AU', 'Family', 'Novel', 'Puisi', 'Cerpen', 'Sejarah', 'Romance', 'Horor', 'Thriller', 'Mystery', 'Fantasy', 'Science Fiction', 'Slice of Life', 'Young Adult', 'Adult', 'Children’s Literature', 'Urban Fantasy' 'Historical', 'Dystopian', 'Contemporary', 'Adventure',  'Thriller & Mystery', 'Lainnya'];
+$genreOptions = ['Fiksi Ilmiah', 'Horor', 'Bromance', 'Fiksi Remaja', 'Omegaverse', 'Angst', 'Biografi', 'Filsafat', 'Hurt/Comfort', 'Local/Lokal AU', 'Family', 'Friendship', 'Novel', 'Puisi', 'Cerpen', 'Sejarah', 'Romance', 'Horor', 'Thriller', 'Mystery', 'Fantasy', 'Science Fiction', 'Slice of Life', 'Young Adult', 'Adult', 'Children’s Literature', 'Urban Fantasy' 'Historical', 'Dystopian', 'Contemporary', 'Adventure',  'Thriller & Mystery', 'Lainnya'];
 ?>
 <?php include '../includes/header.php'; ?>
 
