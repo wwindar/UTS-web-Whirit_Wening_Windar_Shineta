@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-require_once '../db.php';
-require_once '../auth.php';
+require_once ('db.php');
+require_once ('auth.php');
 
 requireLogin();
 
@@ -61,7 +61,7 @@ function renderStars($rating) {
     return $stars;
 }
 ?>
-<?php include '../header.php'; ?>
+<?php include ('header.php'); ?>
 
 <div class="main-content">
     <div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
@@ -140,4 +140,4 @@ function renderStars($rating) {
     <?php endif; ?>
 </div>
 
-<?php include '../footer.php'; ?>
+<?php include ('footer.php'); ?>
