@@ -12,7 +12,7 @@ function requireLogin() {
 
 function redirectIfLoggedIn() {
     if (isLoggedIn()) {
-        header("Location: pages/dashboard.php");
+        header("Location: ../dashboard.php");
         exit();
     }
 }
