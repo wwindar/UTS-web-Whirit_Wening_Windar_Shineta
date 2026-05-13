@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-require_once 'config/db.php';
-require_once 'includes/auth.php';
+require_once 'db.php';
+require_once 'auth.php';
 
 redirectIfLoggedIn();
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (password_verify($password, $user['password'])) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
-                header("Location: pages/dashboard.php");
+                header("Location: dashboard.php");
                 exit();
             } else {
                 $error = 'Password yang anda masukkan salah.';
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Login — Katalog Resensi Buku</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="auth-wrapper">
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <div class="auth-footer">
-            Belum punya akun? <a href="pages/register.php">Daftar di sini</a>
+            Belum punya akun? <a href="register.php">Daftar di sini</a>
         </div>
     </div>
 </div>
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <footer class="footer">
         <p>© <?= date('Y') ?> Katalog Resensi Buku &nbsp;·&nbsp; UTS Praktikum Web Windar Shineta</p>
     </footer>
-<script src="<?= $basePath ?? '../' ?>assets/js/main.js"></script>
+<script src="<?= $basePath ?? '../' ?>main.js"></script>
 
 </body>
 </html>
