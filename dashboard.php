@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-require_once '../db.php';
-require_once '../auth.php';
+require_once ('db.php');
+require_once ('auth.php');
 
 requireLogin();
 
@@ -24,7 +24,7 @@ function renderStars($rating) {
     return $stars;
 }
 ?>
-<?php include '../header.php'; ?>
+<?php include ('header.php'); ?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -115,7 +115,7 @@ function renderStars($rating) {
         </div>
         <?php endif; ?>
         </div>
-        <?php include '../footer.php'; ?>
+        <?php include ('footer.php'); ?>
 
     <script src="<?= $basePath ?? '../' ?>main.js"></script>
 </body>
