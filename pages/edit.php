@@ -65,7 +65,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $buku['rating'] = $rating;
 }
 
-$genreOptions = ['Fiksi Ilmiah', 'Horor', 'Bromance', 'Fiksi Remaja', 'Supranatural', 'Omegaverse', 'Romantic Comedy', 'Angst', 'Biografi', 'Filsafat', 'Hurt/Comfort', 'Local/Lokal AU', 'Family', 'Friendship', 'Novel', 'Puisi', 'Cerpen', 'Sejarah', 'Romance', 'Horor', 'Thriller', 'Mystery', 'Fantasy', 'Science Fiction', 'Slice of Life', 'Young Adult', 'Adult', 'Children’s Literature', 'Urban Fantasy' 'Historical', 'Dystopian', 'Contemporary', 'Adventure',  'Thriller & Mystery', 'Lainnya'];
+// FIX: tambah koma yang hilang antara 'Urban Fantasy' dan 'Historical'
+$genreOptions = [
+    'Fiksi Ilmiah', 'Horor', 'Bromance', 'Fiksi Remaja', 'Supranatural',
+    'Omegaverse', 'Romantic Comedy', 'Angst', 'Biografi', 'Filsafat',
+    'Hurt/Comfort', 'Local/Lokal AU', 'Family', 'Friendship', 'Novel',
+    'Puisi', 'Cerpen', 'Sejarah', 'Romance', 'Thriller', 'Mystery',
+    'Fantasy', 'Science Fiction', 'Slice of Life', 'Young Adult', 'Adult',
+    "Children's Literature", 'Urban Fantasy', 'Historical', 'Dystopian',
+    'Contemporary', 'Adventure', 'Thriller & Mystery', 'Lainnya'
+];
 ?>
 <?php include '../includes/header.php'; ?>
 
@@ -108,8 +117,8 @@ $genreOptions = ['Fiksi Ilmiah', 'Horor', 'Bromance', 'Fiksi Remaja', 'Supranatu
                 <select id="genre" name="genre">
                     <option value="">— Pilih Genre —</option>
                     <?php foreach ($genreOptions as $g): ?>
-                        <option value="<?= $g ?>" <?= $buku['genre'] === $g ? 'selected' : '' ?>>
-                            <?= $g ?>
+                        <option value="<?= htmlspecialchars($g) ?>" <?= $buku['genre'] === $g ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($g) ?>
                         </option>
                     <?php endforeach; ?>
                 </select>

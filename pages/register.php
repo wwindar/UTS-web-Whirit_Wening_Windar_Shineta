@@ -30,25 +30,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-        $error = 'Username sudah digunakan, pilih username lain.';
-        $stmt->close();
-        } 
-        else {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $stmt->close();
+            $error = 'Username sudah digunakan, pilih username lain.';
+            $stmt->close();
+        } else {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $stmt->close();
 
-        $insert = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-        $insert->bind_param("ss", $username, $hashedPassword);
+            $insert = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+            $insert->bind_param("ss", $username, $hashedPassword);
 
-        if ($insert->execute()) {
-        $success = 'Akun berhasil dibuat! Silakan login.';
-        } 
-        else {
-        $error = 'Gagal membuat akun. Coba lagi.';
-        }
+            if ($insert->execute()) {
+                $success = 'Akun berhasil dibuat! Silakan login.';
+            } else {
+                $error = 'Gagal membuat akun. Coba lagi.';
+            }
             $insert->close();
         }
-        if ($stmt->errno === 0 && !isset($insert)) $stmt->close();
     }
 }
 ?>
@@ -63,19 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-brand">
-            <span class="brand-icon">📚</span>
-            <span class="brand-name">Resensi<em>Buku</em></span>
-        </div>
-        <button class="nav-toggle" id="navToggle">☰</button>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="dashboard.php" class="<?= basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : '' ?>">Dashboard</a></li>
-            <li><a href="katalog.php" class="<?= basename($_SERVER['PHP_SELF']) == 'katalog.php' ? 'active' : '' ?>">Katalog</a></li>
-            <li><a href="tambah.php" class="<?= basename($_SERVER['PHP_SELF']) == 'tambah.php' ? 'active' : '' ?>">+ Tambah Resensi</a></li>
-            <li><a href="logout.php" class="nav-logout">Keluar</a></li>
-        </ul>
-    </nav>
 
 <div class="auth-wrapper">
     <div class="auth-card">
@@ -119,9 +103,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </div>
-    <footer class="footer">
-        <p>© <?= date('Y') ?> Katalog Resensi Buku &nbsp;·&nbsp; UTS Praktikum Web Windar Shineta</p>
-    </footer>
-    <script src="<?= $basePath ?? '../' ?>assets/js/main.js"></script>
+
+<footer class="footer">
+    <p>© <?= date('Y') ?> Katalog Resensi Buku &nbsp;·&nbsp; UTS Praktikum Web Windar Shineta</p>
+</footer>
+<script src="../assets/js/main.js"></script>
+
 </body>
 </html>

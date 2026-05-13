@@ -1,5 +1,5 @@
 <?php
-
+// includes/header.php
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -20,8 +20,10 @@
         <button class="nav-toggle" id="navToggle">☰</button>
         <ul class="nav-links" id="navLinks">
             <li><a href="dashboard.php" class="<?= basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : '' ?>">Dashboard</a></li>
-            <li><a href="katalog.php" class="<?= basename($_SERVER['PHP_SELF']) == 'katalog.php' ? 'active' : '' ?>">Katalog</a></li>
-            <li><a href="tambah.php" class="<?= basename($_SERVER['PHP_SELF']) == 'tambah.php' ? 'active' : '' ?>">+ Tambah Resensi</a></li>
+            <li><a href="katalog.php"   class="<?= basename($_SERVER['PHP_SELF']) == 'katalog.php'   ? 'active' : '' ?>">Katalog</a></li>
+            <li><a href="tambah.php"    class="<?= basename($_SERVER['PHP_SELF']) == 'tambah.php'    ? 'active' : '' ?>">+ Tambah Resensi</a></li>
+            <li><a href="profil.php"    class="<?= basename($_SERVER['PHP_SELF']) == 'profil.php'    ? 'active' : '' ?>">👤 Profil</a></li>
+            <li><a href="about.php"     class="<?= basename($_SERVER['PHP_SELF']) == 'about.php'     ? 'active' : '' ?>">📖 About</a></li>
             <li><a href="logout.php" class="nav-logout">Keluar</a></li>
         </ul>
     </nav>
