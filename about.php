@@ -1,15 +1,15 @@
 <?php
 
 session_start();
-require_once '../db.php';
-require_once '../auth.php';
+require_once ('db.php');
+require_once ('auth.php');
 
 requireLogin();
 
 $pageTitle = 'Tentang';
 $basePath = '../';
 ?>
-<?php include '../header.php'; ?>
+<?php include ('header.php'); ?>
 
 <div class="main-content">
     <div class="page-header">
@@ -123,4 +123,4 @@ $basePath = '../';
     </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php include ('footer.php'); ?>
