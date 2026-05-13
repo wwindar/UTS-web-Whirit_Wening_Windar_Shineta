@@ -12,21 +12,18 @@ $basePath = '../';
 $errors = [];
 $success = '';
 
-// Ambil data user
 $stmt = $conn->prepare("SELECT id, username, created_at FROM users WHERE id = ?");
 $stmt->bind_param("i", $_SESSION['user_id']);
 $stmt->execute();
 $user = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 
-// Hitung total resensi milik user ini
 $stmtCount = $conn->prepare("SELECT COUNT(*) as total FROM resensi WHERE user_id = ?");
 $stmtCount->bind_param("i", $_SESSION['user_id']);
 $stmtCount->execute();
 $totalResensi = $stmtCount->get_result()->fetch_assoc()['total'];
 $stmtCount->close();
 
-// Proses ganti password
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password_lama   = $_POST['password_lama'] ?? '';
     $password_baru   = $_POST['password_baru'] ?? '';
@@ -39,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($password_baru !== $password_konfirm) {
         $errors[] = 'Konfirmasi password baru tidak cocok.';
     } else {
-        // Cek password lama
+
         $stmtCek = $conn->prepare("SELECT password FROM users WHERE id = ?");
         $stmtCek->bind_param("i", $_SESSION['user_id']);
         $stmtCek->execute();
@@ -73,7 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:1.5rem;align-items:start">
 
-        <!-- Kartu Info Akun -->
         <div style="background:var(--paper);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;padding:1.8rem;box-shadow:0 4px 20px var(--shadow)">
             <div style="text-align:center;margin-bottom:1.5rem">
                 <div style="width:72px;height:72px;background:var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;font-size:2rem;border:3px solid var(--gold)">
@@ -107,7 +103,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
-        <!-- Form Ganti Password -->
         <div style="background:var(--paper);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;padding:1.8rem;box-shadow:0 4px 20px var(--shadow)">
             <h2 style="font-family:var(--font-display);font-size:1.2rem;color:var(--ink);margin-bottom:0.3rem">🔒 Ganti Password</h2>
             <p style="color:var(--ink-light);font-size:0.85rem;margin-bottom:1.4rem;padding-bottom:1rem;border-bottom:1px solid var(--border)">
