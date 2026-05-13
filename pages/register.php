@@ -30,19 +30,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            $error = 'Username sudah digunakan, pilih username lain.';
-        } else {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $stmt->close();
+        $error = 'Username sudah digunakan, pilih username lain.';
+        $stmt->close();
+        } 
+        else {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $stmt->close();
 
-            $insert = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-            $insert->bind_param("ss", $username, $hashedPassword);
+        $insert = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+        $insert->bind_param("ss", $username, $hashedPassword);
 
-            if ($insert->execute()) {
-                $success = 'Akun berhasil dibuat! Silakan login.';
-            } else {
-                $error = 'Gagal membuat akun. Coba lagi.';
-            }
+        if ($insert->execute()) {
+        $success = 'Akun berhasil dibuat! Silakan login.';
+        } 
+        else {
+        $error = 'Gagal membuat akun. Coba lagi.';
+        }
             $insert->close();
         }
         if ($stmt->errno === 0 && !isset($insert)) $stmt->close();
