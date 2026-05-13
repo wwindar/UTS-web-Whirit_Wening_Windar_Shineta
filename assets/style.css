@@ -1,15 +1,16 @@
-
 :root {
-    --cream: #f5f0e8;
-    --paper: #faf7f2;
-    --ink: #1a1208;
-    --ink-light: #4a3f2f;
-    --brown: #8b6914;
-    --brown-light: #c9a84c;
-    --gold: #d4a843;
-    --rust: #c0392b;
-    --border: #d9cfb8;
-    --shadow: rgba(26, 18, 8, 0.12);
+
+    --cream: #fdf5f7;
+    --paper: #ffffff;
+    --ink: #1b3022;
+    --ink-light: #4a6353;
+    --brown: #d63384;
+    --brown-light: #f8bbd0;
+    --gold: #74a473;
+    --rust: #ff85a1;
+    --border: #e0ece4;
+    --shadow: rgba(116, 164, 115, 0.15);
+    
     --font-display: 'Playfair Display', Georgia, serif;
     --font-body: 'DM Sans', sans-serif;
 }
