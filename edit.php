@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-require_once '../db.php';
-require_once '../auth.php';
+require_once ('db.php');
+require_once ('auth.php');
 
 requireLogin();
 
@@ -75,7 +75,7 @@ $genreOptions = [
     'Contemporary', 'Adventure', 'Thriller & Mystery', 'Lainnya'
 ];
 ?>
-<?php include '../header.php'; ?>
+<?php include ('header.php'); ?>
 
 <div class="main-content">
     <div class="page-header">
@@ -147,4 +147,4 @@ $genreOptions = [
     </div>
 </div>
 
-<?php include '../footer.php'; ?>
+<?php include ('footer.php'); ?>
