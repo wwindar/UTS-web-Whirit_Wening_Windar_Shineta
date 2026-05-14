@@ -17,7 +17,7 @@ $basePath = '../';
         <p>Informasi aplikasi dan profil pembuat.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
+    <div class="about-grid" style="display:grid;gap:1.5rem;align-items:start">
 
         <div style="background:var(--paper);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;padding:1.8rem;box-shadow:0 4px 20px var(--shadow)">
             <div style="text-align:center;margin-bottom:1.5rem">
